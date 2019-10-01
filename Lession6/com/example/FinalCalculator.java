@@ -11,39 +11,81 @@ public class FinalCalculator {
 		System.out.println("Введите один из символов: +, -, *, /, div, mod, ^ ");
 		var act = scanner.next();
 
-		act = enterCharacter(scanner, act);
+		act = checkSymbol(scanner, act);
 
 		System.out.println("Введите два числа: ");
-		var number1 = scanner.nextDouble();
-		var number2 = scanner.nextDouble();
+		var number1 = scanner.nextInt();
+		var number2 = scanner.nextInt();
+		
 
-		var number3 = 0d;
+		calculator(act, number1, number2);
+	}
 
+	public static void calculator(String act, int number1, int number2) {
 		if ("+".equals(act)) {
-			number3 = number1 + number2;
-			fractionalСheck(number3);
+			sum(number1, number2);
 		} else if ("-".equals(act)) {
-			number3 = number1 - number2;
-			fractionalСheck(number3);
+			subtraction(number1, number2);
 		} else if ("*".equals(act)) {
-			number3 = number1 * number2;
-			fractionalСheck(number3);
+			multiplication(number1, number2);
 		} else if ("/".equals(act) && number2 != 0) {
-			number3 = number1 / number2;
-			fractionalСheck(number3);
+			divide(number1, number2);
 		} else if ("div".equals(act) && number2 != 0) {
-			System.out.println("Ваш ответ равен: " + (int) (Math.floor(number1 / number2)));
+			split(number1, number2);
 		} else if ("mod".equals(act) && number2 != 0) {
-			number3 = number1 % number2;
-			fractionalСheck(number3);
+			balance(number1, number2);
 		} else if ("^".equals(act)) {
-			System.out.println("Ваш ответ равен: " + power((int) number1, (int) Math.abs(number2)));
+			aNegativeNumber(number1, number2);
 		} else if (number2 == 0) {
 			System.out.println("На ноль делить нельзя");
 		}
 	}
 
-	public static String enterCharacter(Scanner scanner, String act) {
+	public static void aNegativeNumber(int number1, int number2) {
+		if (number2 < 0) {
+			System.out.println("Вы ввели отрицательную степень");
+		} else {
+			System.out.println("Ваш ответ равен: " + power(number1, number2));
+		}
+	}
+
+	public static void balance(int number1, int number2) {
+		var number3 = 0;
+		number3 = number1 % number2;
+		System.out.println("Ваш ответ равен: " + number3);
+	}
+
+	public static void split(double number1, double number2) {
+		var number3 = 0d;
+		number3 = Math.floor(number1 / number2);
+		System.out.println("Ваш ответ равен: " + number3);
+	}
+
+	public static void divide(double number1, double number2) {
+		var number3 = 0d;
+		number3 = number1 / number2;
+		System.out.println("Ваш ответ равен: " + number3);
+	}
+
+	public static void multiplication(int number1, int number2) {
+		var number3 = 0;
+		number3 = number1 * number2;
+		System.out.println("Ваш ответ равен: " + number3);
+	}
+
+	public static void subtraction(int number1, int number2) {
+		var number3 = 0;
+		number3 = number1 - number2;
+		System.out.println("Ваш ответ равен: " + number3);
+	}
+
+	public static void sum(int number1, int number2) {
+		var number3 = 0;
+		number3 = number1 + number2;
+		System.out.println("Ваш ответ равен: " + number3);
+	}
+
+	public static String checkSymbol(Scanner scanner, String act) {
 		while (!(("+".equals(act)) || ("-".equals(act)) || ("*".equals(act)) || ("/".equals(act)) || ("div".equals(act))
 				|| ("mod".equals(act)) || ("^".equals(act)))) {
 			System.out.println("Вы ввели неправильный символ, повторите");
@@ -52,34 +94,12 @@ public class FinalCalculator {
 		return act;
 	}
 
-	public static void fractionalСheck(double number3) {
-		if (isDoubleInt(number3)) {
-			System.out.println("Ваш ответ равен: " + (int) number3);
-		} else {
-			System.out.println("Ваш ответ равен: " + number3);
-		}
-	}
-
 	public static int power(int number1, int number2) {
-		if (number1 >= 0) {
-			int pow = 1;
-			for (int i = 0; i != number2; i++) {
-				pow = pow * number1;
-			}
-			return (int) pow;
-		} else {
-			int pow = 1;
-			for (int i = 0; i != number2; i++) {
-				pow = pow * number1;
-			}
-			pow = Math.abs(pow) * -1;
-			return (int) pow;
+		var pow = 1;
+		for (int i = 0; i < number2; i++) {
+			pow = pow * number1;
 		}
-	}
-
-	public static boolean isDoubleInt(double number3) {
-		var ebs = 1e-12;
-		return Math.abs(Math.floor(number3) - number3) < ebs;
+		return pow;
 	}
 
 }
