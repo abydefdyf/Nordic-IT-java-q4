@@ -11,7 +11,7 @@ public class FinalCalculator {
 		System.out.println("Введите один из символов: +, -, *, /, div, mod, ^ ");
 		var act = scanner.next();
 
-		act = extracted(scanner, act);
+		act = enterCharacter(scanner, act);
 
 		System.out.println("Введите два числа: ");
 		var number1 = scanner.nextDouble();
@@ -43,7 +43,7 @@ public class FinalCalculator {
 		}
 	}
 
-	public static String extracted(Scanner scanner, String act) {
+	public static String enterCharacter(Scanner scanner, String act) {
 		while (!(("+".equals(act)) || ("-".equals(act)) || ("*".equals(act)) || ("/".equals(act)) || ("div".equals(act))
 				|| ("mod".equals(act)) || ("^".equals(act)))) {
 			System.out.println("Вы ввели неправильный символ, повторите");
