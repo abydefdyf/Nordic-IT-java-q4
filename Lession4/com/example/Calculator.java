@@ -19,66 +19,52 @@ public class Calculator {
 
 		}
 		System.out.println("Введите два числа: ");
-		var number1 = scanner.nextDouble();
-		var number2 = scanner.nextDouble();
+		var number1 = scanner.nextInt();
+		var number2 = scanner.nextInt();
 		var number3 = 0d;
 
 		if ("+".equals(act)) {
 			number3 = number1 + number2;
-			if (isDoubleInt(number3)) {
-				System.out.println("Ваш ответ равен: " + (int) number3);
-			} else {
-				System.out.println("Ваш ответ равен: " + number3);
-			}
+			System.out.println("Ваш ответ равен: " + number3);
+
 		} else if ("-".equals(act)) {
 			number3 = number1 - number2;
-			if (isDoubleInt(number3)) {
-				System.out.println("Ваш ответ равен: " + (int) number3);
-			} else {
-				System.out.println("Ваш ответ равен: " + number3);
-			}
+			System.out.println("Ваш ответ равен: " + number3);
+
 		} else if ("*".equals(act)) {
 			number3 = number1 * number2;
-			if (isDoubleInt(number3)) {
-				System.out.println("Ваш ответ равен: " + (int) number3);
-			} else {
-				System.out.println("Ваш ответ равен: " + number3);
-			}
+
+			System.out.println("Ваш ответ равен: " + number3);
+
 		} else if ("/".equals(act) && number2 != 0) {
 			number3 = number1 / number2;
-			if (isDoubleInt(number3)) {
-				System.out.println("Ваш ответ равен: " + (int) number3);
-			} else {
-				System.out.println("Ваш ответ равен: " + number3);
-			}
+			System.out.println("Ваш ответ равен: " + number3);
+
 		} else if ("div".equals(act) && number2 != 0) {
-			System.out.println("Ваш ответ равен: " + (int) (Math.floor(number1 / number2)));
+
+			System.out.println("Ваш ответ равен: " + Math.floor(number1 / number2));
+
 		} else if ("mod".equals(act) && number2 != 0) {
 			number3 = number1 % number2;
-			if (isDoubleInt(number3)) {
-				System.out.println("Ваш ответ равен: " + (int) number3);
-			} else {
-				System.out.println("Ваш ответ равен: " + number3);
-			}
+			System.out.println("Ваш ответ равен: " + number3);
+
 		} else if ("^".equals(act)) {
-			System.out.println("Ваш ответ равен: " + power((int) Math.abs(number1), (int) Math.abs(number2)));
+			if (number2 < 0) {
+				System.out.println("Вы ввели отрицательную степень");
+			} else {
+				System.out.println("Ваш ответ равен: " + power(number1, number2));
+			}
 		} else if (number2 == 0) {
 			System.out.println("На ноль делить нельзя");
-		} 
+		}
 	}
 
 	public static int power(int number1, int number2) {
-		int pow = 1;
-		for (int i = 0; i != number2; i++) {
+		var pow = 1;
+		for (int i = 0; i < number2; i++) {
 			pow = pow * number1;
 		}
-		return (int) pow;
-
-	}
-
-	public static boolean isDoubleInt(double number3) {
-		var ebs = 1e-12;
-		return Math.abs(Math.floor(number3) - number3) < ebs;
+		return pow;
 	}
 
 }
