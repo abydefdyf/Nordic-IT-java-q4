@@ -17,9 +17,6 @@ public class ConveyorMachine {
       var thread5 = new Thread(new machine5());
       var thread6 = new Thread(new machine6());
 
-      pool.add(thread6);
-
-
       thread1.start();
       thread2.start();
 
@@ -43,6 +40,7 @@ public class ConveyorMachine {
 
 
       thread6.start();
+      pool.add(thread6);
 
     }
 
