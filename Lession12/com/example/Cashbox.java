@@ -21,7 +21,7 @@ public class Cashbox {
     var threads = new ArrayList<Thread>();
 
     for (var i = 0; i < 4; i++) {
-      threads.add(new Thread(new nextGeneration(visitors, vector)));
+      threads.add(new Thread(new NextGeneration(visitors, vector)));
 
     }
 

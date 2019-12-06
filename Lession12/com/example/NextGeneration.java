@@ -2,12 +2,12 @@ package com.example;
 
 import java.util.Vector;
 
-public class nextGeneration implements Runnable {
+public class NextGeneration implements Runnable {
   private Vector<Integer> visitors;
   private Vector<Integer> vector;
 
 
-  public nextGeneration(Vector<Integer> visitors, Vector<Integer> vector) {
+  public NextGeneration(Vector<Integer> visitors, Vector<Integer> vector) {
     super();
     this.visitors = visitors;
     this.vector = vector;
@@ -24,7 +24,7 @@ public class nextGeneration implements Runnable {
 
   private boolean moveElement() {
     Integer element = 0;
-    synchronized (nextGeneration.class) {
+    synchronized (NextGeneration.class) {
       if (visitors.isEmpty()) {
         return false;
       } else {
