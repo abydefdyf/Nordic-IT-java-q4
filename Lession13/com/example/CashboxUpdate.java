@@ -22,10 +22,10 @@ public class CashboxUpdate {
 
     executorService.invokeAll(
         Arrays.asList(
-            Executors.callable(new nextGenerationUpdate(visitors, vector)),
-            Executors.callable(new nextGenerationUpdate(visitors, vector)),
-            Executors.callable(new nextGenerationUpdate(visitors, vector)),
-            Executors.callable(new nextGenerationUpdate(visitors, vector))
+            Executors.callable(new NextGenerationUpdate(visitors, vector)),
+            Executors.callable(new NextGenerationUpdate(visitors, vector)),
+            Executors.callable(new NextGenerationUpdate(visitors, vector)),
+            Executors.callable(new NextGenerationUpdate(visitors, vector))
         )
     );
     executorService.shutdown();
